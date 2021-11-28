@@ -38,7 +38,7 @@ The schema of the Database is as follows :
 
 1. SELECT - Used to return the result of the query.
 2. JOIN - Used to return the data from multiple tables on joining the primary and foreign key of the tables.Different types of joins are ,
-     - LEFT JOIN(dEFAULT)
+     - LEFT JOIN(Default)
      - RIGHT JOIN
      - OUTER JOIN
      - INNER JOIN
