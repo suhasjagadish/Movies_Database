@@ -16,8 +16,7 @@ FROM store
 	LEFT JOIN staff ON store.manager_staff_id = staff.staff_id
     LEFT JOIN address ON store.address_id = address.address_id
     LEFT JOIN city ON address.city_id = city.city_id
-    LEFT JOIN country ON city.country_id = country.country_id
-;
+    LEFT JOIN country ON city.country_id = country.country_id ;
 	
 /*
 2.	I would like to get a better understanding of all of the inventory that would come along with the business. 
@@ -34,8 +33,7 @@ SELECT
     film.replacement_cost
 FROM inventory
 	LEFT JOIN film
-		ON inventory.film_id = film.film_id
-;
+	ON inventory.film_id = film.film_id ;
 
 /* 
 3.	From the same list of films you just pulled, please roll that data up and provide a summary level overview 
@@ -48,11 +46,10 @@ SELECT
     COUNT(inventory_id) AS inventory_items
 FROM inventory
 	LEFT JOIN film
-		ON inventory.film_id = film.film_id
+	ON inventory.film_id = film.film_id
 GROUP BY 
 	inventory.store_id,
-    film.rating
-;
+    film.rating ;
 
 /* 
 4. Similarly, we want to understand how diversified the inventory is in terms of replacement cost. We want to 
@@ -70,19 +67,18 @@ SELECT
     
 FROM inventory
 	LEFT JOIN film
-		ON inventory.film_id = film.film_id
+	ON inventory.film_id = film.film_id
 	LEFT JOIN film_category
-		ON film.film_id = film_category.film_id
+	ON film.film_id = film_category.film_id
 	LEFT JOIN category
-		ON category.category_id = film_category.category_id
+	ON category.category_id = film_category.category_id
 
 GROUP BY 
 	store_id, 
     category.name
     
 ORDER BY 
-	SUM(film.replacement_cost) DESC
-;
+	SUM(film.replacement_cost) DESC ;
 
 /*
 5.	We want to make sure you folks have a good handle on who your customers are. Please provide a list 
@@ -102,8 +98,7 @@ SELECT
 FROM customer
 	LEFT JOIN address ON customer.address_id = address.address_id
     LEFT JOIN city ON address.city_id = city.city_id
-    LEFT JOIN country ON city.country_id = country.country_id
-;
+    LEFT JOIN country ON city.country_id = country.country_id ;
 
 /*
 6.	We would like to understand how much your customers are spending with you, and also to know 
@@ -127,8 +122,7 @@ GROUP BY
     customer.last_name
 
 ORDER BY 
-	SUM(payment.amount) DESC
-    ;
+	SUM(payment.amount) DESC;
     
 /*
 7. My partner and I would like to get to know your board of advisors and any current investors.
